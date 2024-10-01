@@ -18,15 +18,15 @@ int main(){
     int stack = 2;
     void *Mmap = mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0 );
 
-    printf("Adresse mémoire DATA : %p\n", (void*)&data);
-    printf("Adresse mémoire BSS : %p\n", (void*)&dataInit0);
-    printf("Adressse mémoire STR : %p\n", (void*)str);
-    printf("Adressse mémoire Heap : %p\n", (void*)heap);
-    printf("Adresse mémoire Stack : %p\n", (void*)&stack);
-    printf("Adresse mémoire Main Function: %p\n", (void*)main);
-    printf("Adresse mémoire LibC Function %p\n", (void*)printf);
-    printf("Adresse mémoire MMap: %p\n", (void*)Mmap);
-    printf("Commande à utiliser : pmap -X %d\n", pid);
+    printf("Memory address DATA : %p\n", (void*)&data);
+    printf("Memory address BSS : %p\n", (void*)&dataInit0);
+    printf("Memory address STR : %p\n", (void*)str);
+    printf("Memory address Heap : %p\n", (void*)heap);
+    printf("Memory address Stack : %p\n", (void*)&stack);
+    printf("Memory address Main Function: %p\n", (void*)main);
+    printf("Memory address LibC Function %p\n", (void*)printf);
+    printf("Memory address MMap: %p\n", (void*)Mmap);
+    printf("command used : pmap -X %d\n", pid);
     pid = fork();
     if (pid==0){
         execv("/usr/bin/pmap", args);
