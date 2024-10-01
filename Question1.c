@@ -4,8 +4,8 @@
 #include <sys/mman.h>
 #include <sys/wait.h>
 
-int data = 1;
-int dataNotInit;
+const int data = 1;
+int dataInit0 = 0;
 int main(){
     int status;
     __pid_t pid = getpid();
@@ -19,7 +19,7 @@ int main(){
     void *Mmap = mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0 );
 
     printf("Adresse mémoire DATA : %p\n", (void*)&data);
-    printf("Adresse mémoire BSS : %p\n", (void*)&dataNotInit);
+    printf("Adresse mémoire BSS : %p\n", (void*)&dataInit0);
     printf("Adressse mémoire STR : %p\n", (void*)str);
     printf("Adressse mémoire Heap : %p\n", (void*)heap);
     printf("Adresse mémoire Stack : %p\n", (void*)&stack);
